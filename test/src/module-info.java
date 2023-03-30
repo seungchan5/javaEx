@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author staro
+ *
+ */
+module test {
+}
