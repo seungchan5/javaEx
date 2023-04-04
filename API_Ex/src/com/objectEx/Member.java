@@ -28,7 +28,7 @@ public class Member {
 		System.out.println("=================");
 		Member mem2 = new Member("id");
 		// equals :  두 객체를 비교
-		System.out.print("mem1.equals(mem2) : ");
+		System.out.println("mem1.equals(mem2) : "+ mem1.equals(mem2));
 		System.out.println(mem1.equals(mem2));
 	}
 	private String id;
