@@ -4,7 +4,7 @@ public class MathEx {
 	public static void main(String[] args) {
 		// 절대값
 		int i = Math.abs(-5);
-		double d = Math.abs(-5.123);
+		double d = Math.abs(-3.5);
 		System.out.println("절대값 : "+i);
 		System.out.println("절대값 : "+d);
 		
@@ -23,7 +23,8 @@ public class MathEx {
 		// 최소값
 		System.out.println("최소값 : "+Math.min(5.3, 2.5));
 				
-		
+		long j = Math.round(5.3);
+		System.out.println(j);
 		
 	}
 }

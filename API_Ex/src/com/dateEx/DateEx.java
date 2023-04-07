@@ -41,14 +41,15 @@ public class DateEx {
 		/**
 		 * 원하는 형식으로 날짜를 출력할 수 있도록 도와준다
 		 */
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분 ss:SSS초 (E) a");
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 a h시 mm분 ss초");
 		String formatDate = sdf.format(now);
-		System.out.println(formatDate);
-		sdf = new SimpleDateFormat("yyyy-MM-dd");
-		System.out.println(sdf.format(now));
-		sdf = new SimpleDateFormat("hh:mm:ss");
-		System.out.println(sdf.format(now));
+		System.out.println(formatDate); // 출력 결과 : 2023년 04월 05일 오후 6시 26분 38초
+		
+		sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+		System.out.println(sdf.format(now)); // 출력 결과 : 2023-04-05
+		sdf = new SimpleDateFormat("a h시 mm분 ss초");
+		System.out.println(sdf.format(now)); // 출력 결과 : 오후 6:25:03
 		
 	}
 }
