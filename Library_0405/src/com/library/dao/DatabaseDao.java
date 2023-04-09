@@ -82,7 +82,15 @@ public class DatabaseDao implements Dao {
 
 	@Override
 	public int insert(Book book) {
-		// TODO Auto-generated method stub
+		try {
+			Connection conn = DBUtil.getConnection();
+			Statement stmt = conn.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		return 0;
 	}
 
