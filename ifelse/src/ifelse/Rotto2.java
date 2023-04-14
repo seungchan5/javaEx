@@ -8,9 +8,8 @@ public class Rotto2 {
 		while(true) {
 		int rotto = (int)(Math.random()*45+1);
 		System.out.print(rotto+" ");
-		
 		r++;
-		if(r==5) {
+		if(r==6) {
 			break;
 		}
 		}
