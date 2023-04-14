@@ -17,7 +17,7 @@ public class Gugudan {
 			// dan == 6
 			for(int i=9; i>0; i--) {
 				// 만약 6단이면 구구단을 출력하지마
-				if(dan == 2) {
+				if(dan %2 == 1) {
 					// Label의 위치까지 반복문을 탈출 합니다.
 					break Outter;
 				}
