@@ -15,11 +15,13 @@ public class Ex04 {
 	
 	public static Connection getConnection() {
 		Connection conn = null;
-		String sql = "select sysdate from dual";
+		
 		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 		String id ="orauser";
 		String pw ="1234"; 
-			
+		
+		String sql = "select sysdate from dual";
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, id, pw);
@@ -28,6 +30,10 @@ public class Ex04 {
 			rs.next();
 			String sys = rs.getString(1);
 			System.out.println(sys);
+			
+			rs.close();
+			stmt.close();
+			conn.close();
 		} catch (ClassNotFoundException e) {
 			System.err.println("라이브러리를 확인해주세요");
 			System.err.println(e.getMessage());
