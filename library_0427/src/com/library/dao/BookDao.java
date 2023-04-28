@@ -11,9 +11,22 @@ import com.library.common.ConnectionUtil;
 import com.library.vo.Book;
 
 public class BookDao {
+	/**
+	 * 도서목록 조회
+	 * @return
+	 */
 	public List<Book> getList() {
-		List list = new ArrayList<Book>();
-		String sql = "SELECT * FROM BOOK order by no";
+		List<Book> list = new ArrayList<Book>();
+		//String sql = "SELECT * FROM BOOK order by no";
+		String sql = 
+				"SELECT NO, TITLE "
+				+ "    ,NVL((SELECT 대여여부 "
+				+ "			FROM 대여 "
+				+ "			WHERE 도서번호 = NO "
+				+ "			AND 대여여부 = 'Y'),'N') RENTYN"
+				+ "    ,AUTHOR "
+				+ "FROM BOOK "
+				+ "ORDER BY NO";
 		
 		try (Connection conn = ConnectionUtil.getConnection();
 				Statement stmt = conn.createStatement();
@@ -39,7 +52,7 @@ public class BookDao {
 		return list;
 	}
 	/**
-	 *  도서 삽입
+	 *  도서 등록
 	 * @param book
 	 * @return
 	 */
@@ -47,7 +60,7 @@ public class BookDao {
 		int res = 0;
 		String sql = String.format("insert into book values (SEQ_BOOK_NO.NEXTVAL,'%s','%s','%s')", book.getTitle(),book.getRentYN(),book.getAuthor());
 		// 실행될 쿼리를 출력
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		try (Connection conn = ConnectionUtil.getConnection();
 				Statement stmt = conn.createStatement();) {
@@ -69,7 +82,7 @@ public class BookDao {
 	public int delete(int no) {
 		int res = 0;
 		String sql = String.format("DELETE from BOOK WHERE NO = %s", no);
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		try (Connection conn = ConnectionUtil.getConnection();
 				Statement stmt = conn.createStatement();) {
@@ -85,7 +98,7 @@ public class BookDao {
 	public int update(int no, String rentYN) {
 		int res = 0;
 		String sql = String.format("update book set rentYN = '%s' where no = %d", rentYN, no);
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		try (Connection conn = ConnectionUtil.getConnection();
 				Statement stmt = conn.createStatement();) {
@@ -98,4 +111,25 @@ public class BookDao {
 		
 		return res;
 	}
+	public String getRentYN(int no) {
+		String rentYN = "";
+		String sql = String.format("select rentYN from book where no = %s", no);
+		
+		
+		try (Connection conn = ConnectionUtil.getConnection();
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);) {
+			// 조회된 행이 있는지 확인
+			if(rs.next()) {
+				// DB에서 조회된 값을 변수에 저장
+				rentYN = rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rentYN;
+	}
+	
 }

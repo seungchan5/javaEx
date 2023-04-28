@@ -19,7 +19,7 @@ public class MemberDao {
 	public Member login(String id, String pw) {
 		Member member = null;
 		String sql = String.format("select id, name, adminYN, status, grade from member where id = '%s' and pw='%s'",id,pw);
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		try (Connection conn = ConnectionUtil.getConnection();
 				Statement stmt = conn.createStatement();
@@ -43,8 +43,8 @@ public class MemberDao {
 	
 	public int insert(Member member) {
 		int res = 0;
-		String sql = String.format("INSERT INTO MEMBER (id, pw, name) VALUES('%s','%s','%s')", member.getId(),member.getPw(),member.getName());
-		System.out.println(sql);
+		String sql = String.format("INSERT INTO MEMBER (id, pw, name, adminYN) VALUES('%s','%s','%s','%s')", member.getId(),member.getPw(),member.getName(),member.getAdminYN());
+		//System.out.println(sql);
 		
 		try (Connection conn = ConnectionUtil.getConnection();
 				Statement stmt = conn.createStatement();) {
@@ -66,7 +66,7 @@ public class MemberDao {
 	public boolean idCheck(String id) {
 		boolean res = false;
 		String sql = String.format("select * from member where id = '%s'", id);
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		try (Connection conn = ConnectionUtil.getConnection();
 				Statement stmt = conn.createStatement();
@@ -87,7 +87,7 @@ public class MemberDao {
 	public int delete(String id) {
 		int res = 0;
 		String sql = String.format("DELETE FROM MEMBER WHERE ID = '%s'", id);
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		try (Connection conn = ConnectionUtil.getConnection();
 				Statement stmt = conn.createStatement();) {

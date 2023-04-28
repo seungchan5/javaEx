@@ -2,7 +2,7 @@ package com.library;
 
 import java.util.List;
 
-
+import com.library.controller.LibraryController;
 import com.library.dao.BookDao;
 import com.library.dao.MemberDao;
 import com.library.vo.Book;
@@ -11,8 +11,13 @@ import com.library.vo.Member;
 public class Application {
 
 	public static void main(String[] args) {
+		LibraryController lib = new LibraryController();
+		lib.library();
+		
+		
+		
 //		BookDao dao = new BookDao();
-		MemberDao dao = new MemberDao();
+//		MemberDao dao = new MemberDao();
 		//System.out.println(dao.login("admin", "1234"));
 		
 //		멤버 idCheck 테스트
