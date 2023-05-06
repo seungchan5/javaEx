@@ -11,12 +11,12 @@ import com.library.vo.Member;
 public class Application {
 
 	public static void main(String[] args) {
-		LibraryController lib = new LibraryController();
-		lib.library();
+//		LibraryController lib = new LibraryController();
+//		lib.library();
 		
 		
 		
-//		BookDao dao = new BookDao();
+		BookDao dao = new BookDao();
 //		MemberDao dao = new MemberDao();
 		//System.out.println(dao.login("admin", "1234"));
 		
@@ -41,17 +41,17 @@ public class Application {
 //		dao.delete(1);
 
 //		book getList 테스트		
-//		List<Book> list = dao.getList();
-//		for(Book book1 : list) {
-//			System.out.println(book1.toString());
-//		}
-//		
+		List<Book> list = dao.getList();
+		for(Book book : list) {
+			System.out.println(book.toString());
+		}
+		
 //		리스트를 출력하면 리스트의 요소들의 toString이 출력된다.
 //		[]로 묶어서 출력됨
-//		System.out.println(dao.getList().toString());
-//		System.out.println("=========================");
-//		
-//		System.out.println(dao.getList());
+		System.out.println(dao.getList().toString());
+		System.out.println("=========================");
+		
+		System.out.println(dao.getList());
 	}
 
 }
